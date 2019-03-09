@@ -1,0 +1,190 @@
+﻿<html lang="en">
+
+
+<head>
+    <link rel="manifest" href="~/manifest.json">
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Cocoon -Portfolio">
+    <meta name="keywords" content="Cocoon , Portfolio">
+    <meta name="author" content="Pharaohlab">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Home Page</title>
+
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>
+
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/et-line.css" rel="stylesheet">
+    <link href="~/assets/css/ionicons.min.css" rel="stylesheet">
+
+    <link href="~/assets/css/slick.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+
+    <link href="~/assets/css/main.css" rel="stylesheet">
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+    <div class="body-container container-fluid">
+        <a class="menu-btn" href="javascript:void(0)">
+            <i class="ion ion-grid"></i>
+        </a>
+
+        <div class="row">
+            <div class="d-md-none">
+                <div class="mobiletopmenu">
+                    <span style="margin-top:3px; color:white;">Recent Local Leads</span>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-lg-2 col-md-3 col-12 menu_block">
+
+                <div class="logo_box">
+                    <a href="#">
+                        <h2 class="MenuTitle" style="color: white;">@ViewBag.acname</h2>
+                    </a>
+                </div>
+
+
+                <div class="side_menu_section">
+                    <ul class="menu_nav">
+                        <li class="active">
+                            <a onclick="Home();closemenu()">
+                                Home
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+
+                <div class="side_menu_bottom">
+                    <div class="side_menu_bottom_inner">
+                        <ul class="social_menu">
+                            <li>
+                                <a href="#"> <i class="ion ion-social-pinterest"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="ion ion-social-facebook"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="ion ion-social-twitter"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="ion ion-social-dribbble"></i> </a>
+                            </li>
+                        </ul>
+                        @*<div class="copy_right">
+
+                            <p class="copyright">
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+                            </p>
+
+                        </div>*@
+                    </div>
+                </div>
+
+            </div>
+        
+            <div class="col-lg-10 col-md-9 col-12  align-content-center">
+                <div class="loader2" style="margin: 25% auto;"></div>
+                <div class="mainbody">
+                    @RenderBody()
+                </div>
+
+
+
+            </div>
+        </div>
+        </div>
+
+    <script src="~/assets/js/jquery.min.js"></script>
+
+    <script src="~/assets/js/popper.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/waypoints.min.js"></script>
+
+    <script src="~/assets/js/slick.min.js"></script>
+
+    <script src="~/assets/js/imgloaded.js"></script>
+    <script src="~/assets/js/isotope.js"></script>
+
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+
+    <script src="~/assets/js/jquery.counterup.min.js"></script>
+
+    <script src="~/assets/js/wow.min.js"></script>
+
+    <script src="~/assets/js/main.js"></script>
+
+    <script src="~/assets/js/pw.js" async></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+        
+        var lo = document.querySelector(".loader2");
+        lo.style.display = 'none'; 
+        var body = document.querySelector(".mainbody");
+        var id = document.querySelector("#yourid");
+
+        var idnum = id.value
+
+        function Home() {
+            lo.style.display = 'block';
+            body.innerHTML = ""
+            fetch('/home/test?accountid=' + idnum)
+                .then(function (response) {
+
+                    return response.text();
+                })
+                .then(function (myJson) {
+                    lo.style.display = 'none'; 
+                    body.innerHTML = ""
+                    body.innerHTML += myJson
+                    console.log(myJson);
+                });
+        }
+
+        function detail(num) {
+            lo.style.display = 'block';
+            body.innerHTML = ""
+            fetch('/home/detail?accountid=' + idnum + "&callid=" + num)
+                .then(function (response) {
+
+                    return response.text();
+                })
+                .then(function (myJson) {
+                    lo.style.display = 'none';
+                    body.innerHTML = ""
+                    body.innerHTML += myJson
+                    console.log(myJson);
+                });
+        }
+    </script>
+</body>
+
+</html>

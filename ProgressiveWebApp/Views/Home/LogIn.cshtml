@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            background-color: white;
+        }
+
+        .submit{
+            padding: 5px 10px;
+            background-color: cornflowerblue;
+            color: white;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-7" style="margin: 100px auto; background-color: white;">
+                <form style="padding: 5px 5px" method="post" action="@Url.Action("Check","Home")">
+                    <label>Username: </label> <br />
+                    <input type="text" name="username" class="form-control input-sm"/> <br />
+                    <label>Password: </label> <br />
+                    <input type="password" name="password"  class="form-control input-sm"/> <br /> 
+                    <center><input type="submit" class="submit" /></center>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="~/assets/js/jquery.min.js"></script>
+
+    <script src="~/assets/js/popper.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

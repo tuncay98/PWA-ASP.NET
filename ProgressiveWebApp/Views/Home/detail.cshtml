@@ -1,0 +1,42 @@
+﻿@model ProgressiveWebApp.Models.CallDetail
+@{
+    Layout = null;
+}
+
+<div class="container">
+
+    <div class="row">
+        <input type="hidden" id="yourid" value="@Request.Params["accountid"]" />
+
+            <div class="col-12">
+                <div class="qab" style="background-color: white; 	box-shadow: 0 0 21px 0px rgba(0,0,0,0.3); border-radius: 10px; margin: 10px 0; padding: 3px 5px">
+                    <span style="word-wrap: break-word;color: black;">
+
+                        <div style="margin: 3px 0">
+                            <div class="detailqab">Caller: </div>
+                            @Model.contact_number <br />
+                        </div>
+                        <div style="margin: 3px 0">
+                            <div class="detailqab"> Company Name: </div>
+                            @Model.name <br />
+                        </div>
+                        <div style="margin: 3px 0">
+                            <div class="detailqab">Status:</div>
+                            @Model.status.ToUpper() <br />
+                        </div>
+                        <div class="detailqab">Audio Recording:</div> <br />
+                        <audio style="width: 250px" controls>
+                            <source src="@Model.audio" type="audio/wav">
+                        </audio> <br />
+                        <div style="margin: 3px 0">
+                        <a onclick="Home()" style="color: cornflowerblue">< Back</a>
+                        </div>
+                    </span>
+
+                </div>
+            </div>
+        
+    </div>
+
+</div>
+

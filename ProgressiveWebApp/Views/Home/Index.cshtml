@@ -1,0 +1,37 @@
+﻿@model ProgressiveWebApp.Models.CallsAndAccount
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+    <div class="container">
+
+        <div class="row">
+            <input type="hidden" id="yourid" value="@Request.Params["accountid"]" />
+            @foreach (var item in Model.callsList.calls)
+            {
+                <div class="col-12">
+                    <div class="qab" style="background-color: white; margin: 5px 0; padding: 3px 5px; 	box-shadow: 0 0 21px 0px rgba(0,0,0,0.3); border-radius: 10px;">
+                        <span style="word-wrap: break-word;color: black;">
+                            <div style="margin: 3px 0">
+                                <div class="detailqab">Caller # </div>
+                                @item.contact_number <br />
+                            </div>
+                            <div style="margin: 3px 0">
+                                <div class="detailqab">Caller Name:</div>
+                                @item.name <br />
+                            </div>
+                            <div style="margin: 3px 0">
+                                <div class="detailqab">Duration:</div>
+                                @item.talk_time <br />
+                            </div>
+                            <!--<a href="@Url.Action("detail", "home", new { accountid = @Request.Params["accountid"], callid = item.id })">Details</a>-->
+                            <a onclick="detail(@item.id)" style="color: cornflowerblue">Details</a>
+                        </span>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
